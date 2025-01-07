@@ -46,9 +46,19 @@ for file in filepath:
         pdf.cell(w=30,h=8,txt=str(row["price_per_unit"]),border=1)
         pdf.cell(w=30, h=8, txt=str(row["total_price"]), border=1,ln=1)
 
+    total = df["total_price"].sum()
+    pdf.set_font(family="Times",size=10,style="B")
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=50, h=8, txt="", border=1)
+    pdf.cell(w=40, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt=str(total), border=1, ln=1)
 
+    pdf.set_font(family="Times", size=10)
+    pdf.cell(w=30, h=8, txt=f"The total price is: {str(total)}",  ln=1)
 
-
+    pdf.cell(w=30, h=8, txt=f"PythonLearning")
+    pdf.image("Data/pythonhow.png",w=10)
 
 
     pdf.output(f"Data/PDFs/{filename}.pdf")
